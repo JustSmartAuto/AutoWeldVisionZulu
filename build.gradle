@@ -1,0 +1,120 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.gradleup.shadow' version '9.3.1'
+}
+
+group = 'com.autoweld'
+version = '26.9.8'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+compileJava {
+    options.release = 25
+    options.encoding = 'UTF-8'
+}
+
+// 将 images/ 目录打包进 fatjar (模板图片资源)
+sourceSets {
+    main {
+        resources {
+            srcDirs += ['images']
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+def javacvVersion = '1.5.11'
+def platform = 'windows-x86_64'
+
+dependencies {
+    // JavaCV core (OpenCV only, exclude ffmpeg/flycapture etc.)
+    implementation("org.bytedeco:javacv:${javacvVersion}") {
+        exclude group: 'org.bytedeco', module: 'ffmpeg'
+        exclude group: 'org.bytedeco', module: 'flycapture'
+        exclude group: 'org.bytedeco', module: 'libdc1394'
+        exclude group: 'org.bytedeco', module: 'libfreenect'
+        exclude group: 'org.bytedeco', module: 'libfreenect2'
+        exclude group: 'org.bytedeco', module: 'librealsense'
+        exclude group: 'org.bytedeco', module: 'librealsense2'
+        exclude group: 'org.bytedeco', module: 'videoinput'
+        exclude group: 'org.bytedeco', module: 'artoolkitplus'
+        exclude group: 'org.bytedeco', module: 'leptonica'
+        exclude group: 'org.bytedeco', module: 'tesseract'
+        exclude group: 'org.bytedeco', module: 'openblas'
+    }
+    implementation "org.bytedeco:javacpp:${javacvVersion}"
+    implementation "org.bytedeco:javacpp:${javacvVersion}:${platform}"
+    implementation "org.bytedeco:opencv:4.10.0-${javacvVersion}"
+    implementation "org.bytedeco:opencv:4.10.0-${javacvVersion}:${platform}"
+    implementation "org.bytedeco:openblas:0.3.28-${javacvVersion}"
+    implementation "org.bytedeco:openblas:0.3.28-${javacvVersion}:${platform}"
+
+    // Snap7 纯Java移植 (moka7 封装)
+    implementation 'com.github.s7connector:s7connector:2.1'
+
+    // Swing 美化
+    implementation 'com.formdev:flatlaf:3.5.4'
+
+    // JSON
+    implementation 'com.google.code.gson:gson:2.11.0'
+
+    // Ikonli 图标 (Swing + 图标包, 需 Java 11+, 项目当前为 Java 25)
+    // 使用本地 libs 目录下的 jar，避免网络依赖
+    implementation files('libs/ikonli-core-12.3.1.jar')
+    implementation files('libs/ikonli-swing-12.3.1.jar')
+    implementation files('libs/ikonli-fontawesome5-pack-12.3.1.jar')
+    implementation files('libs/ikonli-materialdesign-pack-12.3.1.jar')
+
+    // 本地 jar: QuickJS 脚本引擎 / Paho MQTT
+    implementation files('libs/cn.net.zhijian.quickjs-0.2.2.jar')
+    implementation files('libs/org.eclipse.paho.client.mqttv3-1.2.5.jar')
+
+    // 本地 jar: 海康 MVS SDK Java 封装(存图模式拍照用)
+    implementation files('libs/MvCameraControlWrapper.jar')
+
+    // SQLite (MQTT数据记录)
+    implementation 'org.xerial:sqlite-jdbc:3.46.1.3'
+
+    // Apache POI (xlsx 导出)
+    implementation 'org.apache.poi:poi-ooxml:5.3.0'
+
+    // JS 脚本编辑器
+    implementation 'com.fifesoft:rsyntaxtextarea:3.5.4'
+}
+
+application {
+    mainClass = 'com.autoweld.App'
+    // 运行期依赖与打包一致
+}
+
+shadowJar {
+    archiveBaseName.set('autoweld-vision')
+    archiveClassifier.set('')
+    mergeServiceFiles()
+    // 不启用minimize, 防止误删JNI类; JavaCPP Loader 运行期从jar中自解压natives
+}
+
+jar {
+    enabled = false
+}
+
+// 发行走 shadowJar fatjar, 禁用 application 插件的 startScripts/distZip/distTar
+// (它们隐式依赖 shadowJar 产物, 在 Gradle 9 严格校验下会导致 build 失败)
+startScripts.enabled = false
+distZip.enabled = false
+distTar.enabled = false
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+run {
+    standardInput = System.in
+}

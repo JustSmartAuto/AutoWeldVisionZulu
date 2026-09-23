@@ -1,0 +1,49 @@
+// 整件-尺寸测量 MVS SDK 取图测试工具 —— 独立 fatjar 工程
+// 构建: 在仓库根目录执行  gradlew -p utils/mvs-grab shadowJar
+// 产物: utils/mvs-grab/build/libs/mvs-grab.jar
+// 运行: java -jar mvs-grab.jar -list
+// 注意: 仅打包 MvCameraControlWrapper.jar(Java 封装类); 原生 MvCameraControl.dll
+//       由本机 MVS 运行时提供(C:\Program Files (x86)\Common Files\MVS\Runtime\Win64_x64,
+//       MVS 安装器默认已加入 PATH)。
+plugins {
+    id 'java'
+    id 'com.gradleup.shadow' version '9.3.1'
+}
+
+group = 'com.autoweld.utils'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 海康 MVS SDK Java 封装(随 MVS 客户端分发, 已拷贝到本工程 libs)
+    implementation files('libs/MvCameraControlWrapper.jar')
+}
+
+shadowJar {
+    archiveBaseName.set('mvs-grab')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+    manifest {
+        attributes 'Main-Class': 'com.autoweld.utils.mvs.MeasureGrab'
+    }
+}
+
+jar {
+    enabled = false
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

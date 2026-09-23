@@ -1,0 +1,79 @@
+{
+  "recipeId": 11,
+  "recipeName": "191#(3JT25-1)",
+  "photoDistance1": 122,
+  "photoDistance2": 122,
+  "photoDistance3": 122,
+  "photoDistance4": 122,
+  "exposure1": 6650,
+  "exposure2": 6650,
+  "exposure3": 6650,
+  "exposure4": 6650,
+  "calibFile1": "calib/calib_default.json",
+  "calibFile2": "calib/calib_default.json",
+  "pixelPrecision1": 0.02,
+  "pixelPrecision2": 0.02,
+  "pixelPrecision3": 0.02,
+  "pixelPrecision4": 0.02,
+  "templateImage": "images/measure/测量参考图.jpg",
+  "coarseRoi": [
+    550,
+    400,
+    500,
+    400
+  ],
+  "coarseSearch": [
+    0,
+    0,
+    1600,
+    1200
+  ],
+  "coarseAngleRange": 3.0,
+  "coarseAngleStep": 1.0,
+  "coarseMinScore": 0.4,
+  "topLeftRoi": [
+    300,
+    150,
+    350,
+    350
+  ],
+  "topRightRoi": [
+    950,
+    150,
+    350,
+    350
+  ],
+  "bottomLeftRoi": [
+    300,
+    700,
+    350,
+    350
+  ],
+  "bottomRightRoi": [
+    950,
+    700,
+    350,
+    350
+  ],
+  "topSearchRoi": [
+    500,
+    50,
+    600,
+    250
+  ],
+  "leftEdgeRoi": [
+    100,
+    300,
+    250,
+    600
+  ],
+  "rightEdgeRoi": [
+    1250,
+    300,
+    250,
+    600
+  ],
+  "toleranceHeight": 0.1,
+  "toleranceWidth": 0.1,
+  "toleranceSym": 0.1
+}

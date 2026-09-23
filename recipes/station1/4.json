@@ -1,0 +1,78 @@
+{
+  "recipeId": 4,
+  "recipeName": "196#(2JT25-1)",
+  "photoDistance1": 108,
+  "photoDistance2": 108,
+  "photoDistance3": 108,
+  "photoDistance4": 108,
+  "exposure1": 5600,
+  "exposure2": 5600,
+  "exposure3": 5600,
+  "exposure4": 5600,
+  "calibFile1": "calib/calib_default.json",
+  "calibFile2": "calib/calib_default.json",
+  "pixelPrecision1": 0.02,
+  "pixelPrecision2": 0.02,
+  "pixelPrecision3": 0.02,
+  "pixelPrecision4": 0.02,
+  "templateImage": "images/locate/定位参考图.bmp",
+  "coarseRoi": [
+    500,
+    500,
+    600,
+    600
+  ],
+  "coarseSearch": [
+    0,
+    0,
+    1600,
+    1600
+  ],
+  "coarseAngleRange": 3.0,
+  "coarseAngleStep": 1.0,
+  "coarseMinScore": 0.4,
+  "leftCornerRoi": [
+    200,
+    1100,
+    450,
+    350
+  ],
+  "leftCornerSearch": [
+    100,
+    1000,
+    650,
+    500
+  ],
+  "rightCornerRoi": [
+    950,
+    1100,
+    450,
+    350
+  ],
+  "rightCornerSearch": [
+    850,
+    1000,
+    650,
+    500
+  ],
+  "weldOffsetsX": [
+    -40.0,
+    40.0,
+    -40.0,
+    40.0,
+    -40.0,
+    40.0,
+    -40.0,
+    40.0
+  ],
+  "weldOffsetsY": [
+    -40.0,
+    -40.0,
+    40.0,
+    40.0,
+    -40.0,
+    -40.0,
+    40.0,
+    40.0
+  ]
+}

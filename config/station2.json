@@ -1,0 +1,26 @@
+{
+  "stationId": 2,
+  "name": "电磁-磁保持",
+  "type": "locate",
+  "recipeDir": "recipes/station2",
+  "defaultRecipe": 1,
+  "stationRecipeIds": {
+    "左": [1, 2, 3, 4],
+    "右": [5, 6, 7, 8]
+  },
+  "imageStoreDir": "D:/CCD图片",
+  "plc": {
+    "enabled": true,
+    "ip": "192.168.1.10",
+    "rack": 0,
+    "slot": 1,
+    "port": 102,
+    "pollMs": 50,
+    "heartbeatMs": 500,
+    "retryMs": 5000
+  },
+  "flows": [
+    {"flowId": 1, "name": "左", "station": "左", "hmiPort": 11101, "cameraDir": "images/locate", "cameraSn": "DA9339921", "dbNumber": 92, "triggerValue": 1},
+    {"flowId": 2, "name": "右", "station": "右", "hmiPort": 11102, "cameraDir": "images/locate", "cameraSn": "DA9340145", "dbNumber": 93, "triggerValue": 1}
+  ]
+}

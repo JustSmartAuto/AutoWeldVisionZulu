@@ -1,0 +1,79 @@
+{
+  "recipeId": 3,
+  "recipeName": "7#A",
+  "photoDistance1": 106,
+  "photoDistance2": 106,
+  "photoDistance3": 106,
+  "photoDistance4": 106,
+  "exposure1": 5450,
+  "exposure2": 5450,
+  "exposure3": 5450,
+  "exposure4": 5450,
+  "calibFile1": "calib/calib_default.json",
+  "calibFile2": "calib/calib_default.json",
+  "pixelPrecision1": 0.02,
+  "pixelPrecision2": 0.02,
+  "pixelPrecision3": 0.02,
+  "pixelPrecision4": 0.02,
+  "templateImage": "images/measure/测量参考图.jpg",
+  "coarseRoi": [
+    550,
+    400,
+    500,
+    400
+  ],
+  "coarseSearch": [
+    0,
+    0,
+    1600,
+    1200
+  ],
+  "coarseAngleRange": 3.0,
+  "coarseAngleStep": 1.0,
+  "coarseMinScore": 0.4,
+  "topLeftRoi": [
+    300,
+    150,
+    350,
+    350
+  ],
+  "topRightRoi": [
+    950,
+    150,
+    350,
+    350
+  ],
+  "bottomLeftRoi": [
+    300,
+    700,
+    350,
+    350
+  ],
+  "bottomRightRoi": [
+    950,
+    700,
+    350,
+    350
+  ],
+  "topSearchRoi": [
+    500,
+    50,
+    600,
+    250
+  ],
+  "leftEdgeRoi": [
+    100,
+    300,
+    250,
+    600
+  ],
+  "rightEdgeRoi": [
+    1250,
+    300,
+    250,
+    600
+  ],
+  "toleranceHeight": 0.1,
+  "toleranceWidth": 0.1,
+  "toleranceSym": 0.1
+}

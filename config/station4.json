@@ -1,0 +1,21 @@
+{
+  "stationId": 4,
+  "name": "整件-尺寸测量",
+  "type": "measure",
+  "recipeDir": "recipes/station4",
+  "defaultRecipe": 1,
+  "imageStoreDir": "D:/CCD图片",
+  "plc": {
+    "enabled": true,
+    "ip": "192.168.1.110",
+    "rack": 0,
+    "slot": 1,
+    "port": 102,
+    "pollMs": 50,
+    "heartbeatMs": 500,
+    "retryMs": 5000
+  },
+  "flows": [
+    {"flowId": 1, "name": "测量", "station": "测量", "hmiPort": 11101, "cameraDir": "images/measure", "cameraSn": "DB1021745", "dbNumber": 97, "triggerValue": 1}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "stationId": 3,
+  "name": "整件-支架焊接",
+  "type": "locate",
+  "recipeDir": "recipes/station3",
+  "defaultRecipe": 1,
+  "stationRecipeIds": {
+    "左": [1, 2, 3, 4, 5],
+    "右": [6, 7, 8, 9, 10, 11, 12, 13]
+  },
+  "imageStoreDir": "D:/CCD图片",
+  "plc": {
+    "enabled": true,
+    "ip": "192.168.1.70",
+    "rack": 0,
+    "slot": 1,
+    "port": 102,
+    "pollMs": 50,
+    "heartbeatMs": 500,
+    "retryMs": 5000
+  },
+  "flows": [
+    {"flowId": 1, "name": "左左", "station": "左", "hmiPort": 11101, "cameraDir": "images/locate", "cameraSn": "DA9339941", "dbNumber": 92, "triggerValue": 1},
+    {"flowId": 2, "name": "左右", "station": "左", "hmiPort": 11102, "cameraDir": "images/locate", "cameraSn": "DA8432642", "dbNumber": 97, "triggerValue": 2},
+    {"flowId": 3, "name": "右左", "station": "右", "hmiPort": 11103, "cameraDir": "images/locate", "cameraSn": "DA9340129", "dbNumber": 98, "triggerValue": 1},
+    {"flowId": 4, "name": "右右", "station": "右", "hmiPort": 11104, "cameraDir": "images/locate", "cameraSn": "DA9339926", "dbNumber": 93, "triggerValue": 2}
+  ]
+}
